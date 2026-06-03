@@ -627,10 +627,7 @@ function initHeroVideo(){
     hero.classList.add('hero-no-video');
     return;
   }
-  var mobile = window.matchMedia('(max-width: 767px)').matches;
-  var sources = mobile
-    ? ['hero-720.mp4']
-    : ['hero-1080.mp4', '13633626-uhd_3840_2160_30fps.mp4'];
+  var sources = ['hero-720.mp4'];
   var io = new IntersectionObserver(function(entries){
     if (!entries[0].isIntersecting) return;
     video.src = sources[0];
