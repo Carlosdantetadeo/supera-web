@@ -72,6 +72,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 .topbar-logo{
   height:36px;
   object-fit:contain;
+  transform:translateZ(0);
+  image-rendering:-webkit-optimize-contrast;
 }
 .topbar-cta{
   padding:.45rem 1.2rem;
@@ -145,7 +147,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 .hero-logo{
   width:min(320px,60vw);
-  filter:drop-shadow(0 8px 24px rgba(0,0,0,.6));
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.9));
+  transform:translateZ(0);
   animation:fadeLeft .7s .25s both;
 }
 
