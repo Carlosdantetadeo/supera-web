@@ -479,8 +479,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 <!-- ─── HERO ─── -->
 <section id="hero" class="grain">
-  <!-- Video: carga diferida (ver initHeroVideo). Opcional: hero-720.mp4 para móvil -->
-  <video id="hero-video" poster="logo.png" muted loop playsinline preload="none" aria-hidden="true"></video>
+  <video id="hero-video" src="hero-720.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 
   <div class="hero-grad"></div>
   <div class="hero-glow"></div>
@@ -618,29 +617,10 @@ function initHeroVideo(){
   var video = document.getElementById('hero-video');
   if (!hero || !video) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    hero.classList.add('hero-no-video');
-    return;
-  }
-  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  var slowNet = conn && (conn.saveData || /(^2g$|^slow-2g$|^3g$)/.test(conn.effectiveType || ''));
-  if (slowNet) {
-    hero.classList.add('hero-no-video');
-    return;
-  }
-  var sources = ['hero-720.mp4'];
-  var io = new IntersectionObserver(function(entries){
-    if (!entries[0].isIntersecting) return;
-    video.src = sources[0];
-    video.addEventListener('error', function(){
-      hero.classList.add('hero-no-video');
-    }, {once:true});
-    video.addEventListener('canplay', function(){
-      video.play().catch(function(){});
-    }, {once:true});
+    video.removeAttribute('src');
     video.load();
-    io.disconnect();
-  }, {threshold: 0.15, rootMargin: '50px'});
-  io.observe(hero);
+    hero.classList.add('hero-no-video');
+  }
 }
 
 (function init(){
