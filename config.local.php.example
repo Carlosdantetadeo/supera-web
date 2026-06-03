@@ -1,0 +1,6 @@
+<?php
+/**
+ * Alternativa legacy a .env.local (opcional).
+ * Preferido: copia .env.example → .env.local
+ */
+$PASSWORD = 'tu-contraseña-segura';

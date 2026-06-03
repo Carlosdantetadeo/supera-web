@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<meta name="theme-color" content="#070707"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="description" content="SUPERA – Zapatillas deportivas premium. Move is life. Catálogos fútbol, basket, mujer y hombre."/>
+<title>SUPERA – Move is Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="dns-prefetch" href="https://canva.link"/>
+<link rel="preload" href="logo.png" as="image" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --red:#e8392c;
+  --red-dark:#c42d22;
+  --black:#070707;
+  --surface1:#101010;
+  --surface2:#181818;
+  --surface3:#222;
+  --border:#2a2a2a;
+  --muted:#666;
+  --white:#fff;
+  --ff-display:'Barlow Condensed',sans-serif;
+  --ff-body:'DM Sans',system-ui,sans-serif;
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;color-scheme:dark}
+body{font-family:var(--ff-body);background:var(--black);color:var(--white);overflow-x:hidden;touch-action:manipulation}
+
+.skip-link{position:absolute;left:-9999px;top:1rem;z-index:200;padding:.6rem 1rem;background:var(--red);color:var(--white);font-weight:700;font-family:var(--ff-display);text-decoration:none;border-radius:2px;letter-spacing:.08em;text-transform:uppercase}
+.skip-link:focus-visible{left:1rem;outline:2px solid var(--white);outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+.topbar-cta,.hero-badge,.hero-headline,.sec-title,.eyebrow,.strip-track span,.card-name,.card-label,.card-cta,.footer-title{font-family:var(--ff-display)}
+
+.grain::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:5;
+  opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-badge,.hero-logo,.hero-headline,.hero-actions{animation:none!important}
+  .scroll-line,.strip-track,.hero-badge span{animation:none!important}
+  .card{opacity:1;transform:none!important;transition:opacity .2s,border-color .2s,box-shadow .2s!important}
+  .card:hover{transform:none!important}
+}
+
+/* ─── TOPBAR ─── */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;
+  background:rgba(7,7,7,0);
+  backdrop-filter:blur(0px);
+  transition:background .4s,backdrop-filter .4s;
+}
+#topbar.scrolled{
+  background:rgba(7,7,7,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-logo{
+  height:36px;
+  object-fit:contain;
+}
+.topbar-cta{
+  padding:.45rem 1.2rem;
+  background:var(--red);
+  color:var(--white);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-radius:2px;
+  transition:background .2s;
+}
+.topbar-cta:hover{background:var(--red-dark)}
+
+/* ─── HERO ─── */
+#hero{
+  position:relative;
+  height:100svh;min-height:620px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+#hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  background:var(--black);
+}
+#hero.hero-no-video .hero-grad{opacity:1}
+/* Cinematic overlays */
+.hero-grad{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to right,rgba(7,7,7,.80) 0%,rgba(7,7,7,.15) 60%,transparent 100%),
+    linear-gradient(to top,rgba(7,7,7,.95) 0%,rgba(7,7,7,0) 40%);
+}
+/* Red accent glow */
+.hero-glow{
+  position:absolute;bottom:-80px;left:-80px;
+  width:480px;height:480px;
+  background:radial-gradient(circle,rgba(232,57,44,.18) 0%,transparent 70%);
+  z-index:2;pointer-events:none;
+}
+
+.hero-content{
+  position:relative;z-index:3;
+  width:100%;max-width:1200px;
+  padding:0 2.5rem;
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  gap:1.5rem;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.35rem .9rem;
+  border:1px solid rgba(232,57,44,.5);
+  border-radius:2px;
+  font-size:.68rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--red);
+  animation:fadeLeft .7s .1s both;
+}
+.hero-badge span{
+  display:inline-block;
+  width:6px;height:6px;
+  background:var(--red);border-radius:50%;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-logo{
+  width:min(320px,60vw);
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.6));
+  animation:fadeLeft .7s .25s both;
+}
+
+.hero-headline{
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  font-weight:300;
+  color:rgba(255,255,255,.55);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  animation:fadeLeft .7s .4s both;
+}
+
+.hero-actions{
+  display:flex;align-items:center;gap:1rem;
+  animation:fadeLeft .7s .55s both;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:1rem 2.2rem;
+  background:var(--red);
+  color:var(--white);
+  font-weight:700;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;
+  border-radius:2px;
+  transition:background .25s,transform .2s,box-shadow .25s;
+  box-shadow:0 4px 28px rgba(232,57,44,.4);
+}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 36px rgba(232,57,44,.55)}
+.btn-primary svg{transition:transform .25s}
+.btn-primary:hover svg{transform:translateX(4px)}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.95rem 1.8rem;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:2px;
+  color:rgba(255,255,255,.7);
+  font-size:.88rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;
+  transition:border-color .25s,color .25s;
+  display:none; /* oculto por ahora */
+}
+
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:6;display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  cursor:pointer;opacity:.45;transition:opacity .3s;
+  border:none;background:transparent;padding:0;font-family:var(--ff-display);color:inherit;
+}
+.scroll-hint:hover{opacity:.8}
+.scroll-hint p{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--white)}
+.scroll-line{
+  width:1px;height:48px;
+  background:linear-gradient(to bottom,transparent,var(--red));
+  animation:lineDown 1.8s ease-in-out infinite;
+}
+@keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ─── STRIP rojo ─── */
+.red-strip{
+  background:var(--red);
+  padding:.65rem 2rem;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.strip-track{
+  display:inline-flex;gap:3rem;
+  animation:marquee 18s linear infinite;
+}
+.strip-track span{
+  font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--white);opacity:.9;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── CATÁLOGOS ─── */
+#catalogos{
+  background:var(--surface1);
+  padding:6rem 2rem 7rem;
+  position:relative;
+}
+#catalogos::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,var(--red),transparent);
+}
+
+.sec-wrap{max-width:1140px;margin:0 auto}
+
+.sec-head{
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+  margin-bottom:3.5rem;gap:.6rem;
+}
+.eyebrow{
+  font-size:.7rem;font-weight:700;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--red);
+}
+.sec-title{
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:800;text-transform:uppercase;
+  letter-spacing:.02em;line-height:1;
+  text-wrap:balance;
+}
+.sec-title em{font-style:normal;color:var(--red)}
+.title-rule{
+  width:40px;height:2px;
+  background:var(--red);margin-top:.5rem;
+}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.75rem;
+}
+.grid > .card:nth-child(5){
+  grid-column: 1 / span 2;
+}
+@media(min-width:640px){
+  .grid{grid-template-columns:repeat(6,1fr);gap:1rem}
+  .grid > .card{grid-column:span 2}
+  .grid > .card:nth-child(4){grid-column: 2 / span 2}
+  .grid > .card:nth-child(5){grid-column: 4 / span 2}
+}
+@media(min-width:900px){
+  .grid{gap:1.25rem}
+}
+
+/* Card */
+.card{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:2rem 1.5rem 1.75rem;
+  display:flex;flex-direction:column;
+  gap:1.1rem;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  opacity:0;transform:translateY(32px);
+  transition:opacity .55s ease,transform .55s ease,
+              border-color .3s,box-shadow .3s;
+  text-decoration:none;color:inherit;
+}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{
+  border-color:var(--red);
+  box-shadow:0 12px 48px rgba(0,0,0,.5),0 0 0 1px var(--red) inset;
+  transform:translateY(-5px)!important;
+}
+
+/* Top accent line */
+.card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.card:hover::before{transform:scaleX(1)}
+
+/* Corner number */
+.card-n{
+  position:absolute;top:1.1rem;right:1.2rem;
+  font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;color:var(--muted);
+  font-feature-settings:"tnum";
+}
+
+/* Icon */
+.card-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--surface3);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s;
+}
+.card:hover .card-icon{background:var(--red)}
+.card-icon svg{width:24px;height:24px;fill:var(--white);opacity:.75;transition:opacity .3s}
+.card:hover .card-icon svg{opacity:1}
+
+.card-label{
+  font-size:.62rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);
+}
+.card-name{
+  font-size:1.05rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;
+  line-height:1.2;
+}
+
+.card-cta{
+  display:inline-flex;align-items:center;gap:.4rem;
+  margin-top:auto;
+  font-size:.75rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);
+  transition:gap .25s;
+}
+.card:hover .card-cta{gap:.65rem}
+.card-cta svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ─── FOOTER ─── */
+#footer{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:4rem 2rem;
+}
+.footer-wrap{
+  max-width:1140px;margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3.5rem;
+  text-align:center;
+}
+@media(min-width:768px){
+  .footer-wrap{
+    grid-template-columns: 1fr 1fr 1.2fr;
+    text-align:left;
+    align-items:start;
+    padding-right: 50px;
+  }
+}
+
+.footer-logo{
+  height:48px;object-fit:contain;
+  margin-bottom: 0.8rem;
+}
+.footer-phrase{
+  font-size:.8rem;color:var(--muted);
+  letter-spacing:.06em;font-weight:300;
+  margin-bottom: 1.5rem;
+}
+.footer-copy{
+  font-size:.7rem;color:var(--muted);
+  opacity:.5;
+}
+
+.footer-title {
+  font-size:.85rem; font-weight:700; margin-bottom:1.2rem;
+  color:var(--white); text-transform:uppercase; letter-spacing:.05em;
+}
+
+.social-links {
+  display:flex; flex-direction:column; align-items:center; gap:0.8rem;
+}
+@media(min-width:768px){ .social-links{align-items:flex-start;} }
+
+.social-pill {
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.65rem 1.4rem;
+  color:var(--white);
+  border-radius:30px;
+  font-size:.8rem;font-weight:600;
+  letter-spacing:.04em;
+  text-decoration:none;
+  transition:opacity .25s,transform .2s;
+  width: 100%; max-width: 220px;
+  justify-content:center;
+}
+.social-pill:hover{opacity:.85;transform:translateY(-2px)}
+.social-pill svg{width:18px;height:18px;fill:var(--white)}
+
+.fb-pill{ background:#1877f2; }
+.tk-pill{ background:#111; border: 1px solid var(--border); }
+
+.contact-text { font-size:.8rem; color:var(--muted); margin-bottom:.5rem; line-height:1.4; }
+.footer-map {
+  width: 100%; height: 120px; border: 0; border-radius: 6px; margin-top: 0.5rem;
+  filter: grayscale(100%) invert(90%) contrast(80%);
+}
+
+/* ─── WHATSAPP BTN ─── */
+.whatsapp-btn {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 56px; height: 56px;
+  background-color: #25d366; color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+  z-index: 999;
+  transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s;
+  text-decoration: none;
+}
+.whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+  background-color: #20b858;
+}
+.whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
+
+@media(max-width:767px){
+  #topbar{padding:0 max(1rem, env(safe-area-inset-left)) 0 max(1rem, env(safe-area-inset-right))}
+  #hero{min-height:max(100svh, 480px)}
+  .hero-content{padding:0 max(1.25rem, env(safe-area-inset-left)) 0 max(1.25rem, env(safe-area-inset-right))}
+  .hero-logo{width:min(260px, 72vw)}
+  .btn-primary{min-height:48px;padding:.9rem 1.6rem;font-size:.82rem}
+  .topbar-cta{min-height:44px;display:inline-flex;align-items:center;padding:.5rem 1rem}
+  #catalogos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
+  .card{padding:1.35rem 1rem 1.25rem;min-height:44px}
+  .card-name{font-size:.95rem}
+  #footer{padding:3rem max(1rem, env(safe-area-inset-left)) max(6rem, calc(5rem + env(safe-area-inset-bottom))) max(1rem, env(safe-area-inset-right))}
+  .whatsapp-btn{
+    bottom:max(1.25rem, env(safe-area-inset-bottom));
+    right:max(1.25rem, env(safe-area-inset-right));
+    width:52px;height:52px;
+  }
+  .whatsapp-btn svg{width:28px;height:28px}
+  .red-strip{padding:.65rem max(1rem, env(safe-area-inset-left))}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#catalogos">Ir a catálogos</a>
+
+<!-- ─── TOPBAR ─── -->
+<header id="topbar">
+  <img src="logo.png" alt="Supera" class="topbar-logo" width="140" height="36" decoding="async" fetchpriority="high"/>
+  <a href="#catalogos" class="topbar-cta">Ver catálogos</a>
+</header>
+
+<!-- ─── HERO ─── -->
+<section id="hero" class="grain">
+  <!-- Video: carga diferida (ver initHeroVideo). Opcional: hero-720.mp4 para móvil -->
+  <video id="hero-video" poster="logo.png" muted loop playsinline preload="none" aria-hidden="true"></video>
+
+  <div class="hero-grad"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span> Colección 2026
+    </div>
+    <img src="logo.png" alt="Supera – Move is Life" class="hero-logo" width="320" height="120" decoding="async" fetchpriority="high"/>
+    <p class="hero-headline">Viste tu juego · Define tu estilo</p>
+    <div class="hero-actions">
+      <a href="#catalogos" class="btn-primary" id="btn-ver-catalogos">
+        Ver catálogos
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <button type="button" class="scroll-hint" id="scroll-hint" aria-label="Ir a catálogos">
+    <p>Scroll</p>
+    <div class="scroll-line" aria-hidden="true"></div>
+  </button>
+</section>
+
+<!-- ─── STRIP ─── -->
+<div class="red-strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>👟 EMPRENDE CON NOSOTROS 👟</span><span>·</span>
+    <span>👉 SOMOS LA TIENDA #1 DEL PERÚ 👈</span><span>·</span>
+    <span>🚘 HACEMOS ENVÍOS A TODO EL PERÚ</span><span>·</span>
+    <span>Colección 2026</span><span>·</span>
+    <span>👟 EMPRENDE CON NOSOTROS 👟</span><span>·</span>
+    <span>👉 SOMOS LA TIENDA #1 DEL PERÚ 👈</span><span>·</span>
+    <span>🚘 HACEMOS ENVÍOS A TODO EL PERÚ</span><span>·</span>
+    <span>Colección 2026</span><span>·</span>
+  </div>
+</div>
+
+<!-- ─── CATÁLOGOS ─── -->
+<main id="main">
+<section id="catalogos" class="grain">
+  <div class="sec-wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Colecciones 2026</span>
+      <h2 class="sec-title">Nuestros <em>Catálogos</em></h2>
+      <div class="title-rule"></div>
+    </div>
+    <div class="grid" id="cards-grid"></div>
+  </div>
+</section>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer id="footer">
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Supera" class="footer-logo" width="160" height="48" decoding="async" loading="lazy"/>
+      <p class="footer-phrase">Move is life · Cada paso cuenta</p>
+      <p class="footer-copy">© 2026 Supera. Todos los derechos reservados.</p>
+    </div>
+    
+    <div class="footer-community">
+      <h3 class="footer-title">Únete a nuestra comunidad</h3>
+      <div class="social-links">
+        <a href="https://www.facebook.com/gsportperu/?locale=es_LA" target="_blank" rel="noopener" class="social-pill fb-pill">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.493-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.tiktok.com/@superaoficial" target="_blank" rel="noopener" class="social-pill tk-pill">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm2.697 6.46a4.26 4.26 0 0 0 2.303.65v2.24a6.452 6.452 0 0 1-3.238-1.002v4.846a4.423 4.423 0 1 1-4.42-4.42 4.3 4.3 0 0 1 1.258.188v2.348a2.15 2.15 0 0 0-.258-.016 2.181 2.181 0 1 0 2.181 2.181V4.654h2.24a4.28 4.28 0 0 0 .934 3.806z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-contact">
+      <h3 class="footer-title">Ubícanos</h3>
+      <p class="contact-text">Jr. Leticia 699 - Centro de Lima, Lima, Peru</p>
+      <p class="contact-text">Tel: <a href="tel:+51989214168" style="color:inherit;text-decoration:underline;text-underline-offset:3px">+51 989 214 168</a></p>
+      <iframe class="footer-map" title="Mapa de ubicación Supera en Jr. Leticia 699, Lima" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.8841443657876!2d-77.03153572412852!3d-12.051460342044815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c6db249257%3A0xcda6b0ab2b9f71c1!2sJr.%20Leticia%20699%2C%20Lima%2015001!5e0!3m2!1sen!2spe!4v1714500000000!5m2!1sen!2spe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║   ZONA DE CONFIGURACIÓN – EDITAR AQUÍ                       ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+const WHATSAPP_NUM = '51989214168';
+const WHATSAPP_MSG = 'Hola Supera, quiero información sobre sus catálogos.';
+const CATALOGOS = [
+  {
+    nombre: "Preventa",
+    tag: "Oferta especial",
+    url: "https://canva.link/4wsaxnpao3f3umc",
+    icono: "preventa"
+  },
+  {
+    nombre: "Fútbol",
+    tag: "Colección",
+    url: "https://canva.link/y513y5cz1eaxlxl",
+    icono: "futbol"
+  },
+  {
+    nombre: "Basket",
+    tag: "Colección",
+    url: "https://canva.link/5m8msr2wwsw74l7",
+    icono: "basket"
+  },
+  {
+    nombre: "Mujer",
+    tag: "Colección",
+    url: "https://canva.link/fuo3h55ff13ywnv",
+    icono: "mujer"
+  },
+  {
+    nombre: "Hombre",
+    tag: "Colección",
+    url: "https://canva.link/fuo3h55ff13ywnv",
+    icono: "hombre"
+  }
+];
+/* ════════════════════════════════════════════════════════════════ */
+
+const ICONS = {
+  preventa:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4V2h10v2h3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3zm0 2H5v14h14V6h-2v2H7V6zm2-2v2h6V4H9zm-1 8h8v2H8v-2z"/></svg>`,
+  futbol: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm6.93 6h-2.758l-1.2-3.685A8.06 8.06 0 0 1 18.93 8zM12 4c.494 0 .976.046 1.443.132L14.8 8H9.2l1.357-3.868A8.098 8.098 0 0 1 12 4zm-2.972.315L7.828 8H5.07a8.06 8.06 0 0 1 3.958-3.685zM4.212 10h3.161l-.814 4H4.2A8.03 8.03 0 0 1 4 12c0-.68.074-1.342.212-2zm.874 6h2.16l1.047 3.424A8.032 8.032 0 0 1 5.086 16zm5.147 3.895L9.04 16h5.92l-1.193 3.895a8.104 8.104 0 0 1-3.534 0zm5.779-.471L17.06 16h2.16a8.032 8.032 0 0 1-3.207 3.424zM19.8 14h-2.36l-.813-4H19.788A8.03 8.03 0 0 1 20 12c0 .68-.074 1.342-.2 2z"/></svg>`,
+  basket: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2a7.98 7.98 0 0 1 5.195 1.928L4.929 17.194A7.98 7.98 0 0 1 4 12c0-4.411 3.589-8 8-8zm0 16a7.98 7.98 0 0 1-5.195-1.928l12.266-7.266A7.98 7.98 0 0 1 20 12c0 4.411-3.589 8-8 8z"/></svg>`,
+  mujer:  `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 15.93V18H9v2h2v2h2v-2h2v-2h-2v-2.07A8 8 0 1 0 11 15.93zM12 14A6 6 0 1 1 12 2a6 6 0 0 1 0 12z"/></svg>`,
+  hombre: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 3h6v6l-2.293-2.293-4.888 4.888A5 5 0 1 1 9.71 8.124L15 3zm-4 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>`
+};
+
+function initHeroVideo(){
+  var hero = document.getElementById('hero');
+  var video = document.getElementById('hero-video');
+  if (!hero || !video) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    hero.classList.add('hero-no-video');
+    return;
+  }
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var slowNet = conn && (conn.saveData || /(^2g$|^slow-2g$|^3g$)/.test(conn.effectiveType || ''));
+  if (slowNet) {
+    hero.classList.add('hero-no-video');
+    return;
+  }
+  var mobile = window.matchMedia('(max-width: 767px)').matches;
+  var sources = mobile
+    ? ['hero-720.mp4']
+    : ['hero-1080.mp4', '13633626-uhd_3840_2160_30fps.mp4'];
+  var io = new IntersectionObserver(function(entries){
+    if (!entries[0].isIntersecting) return;
+    video.src = sources[0];
+    video.addEventListener('error', function onErr(){
+      video.removeEventListener('error', onErr);
+      if (sources[1]) {
+        video.src = sources[1];
+        video.load();
+        video.play().catch(function(){});
+      } else {
+        hero.classList.add('hero-no-video');
+      }
+    }, {once:true});
+    video.load();
+    video.play().catch(function(){ hero.classList.add('hero-no-video'); });
+    io.disconnect();
+  }, {threshold: 0.15, rootMargin: '50px'});
+  io.observe(hero);
+}
+
+(function init(){
+  initHeroVideo();
+  const grid = document.getElementById('cards-grid');
+
+  CATALOGOS.forEach(function(cat, i){
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = cat.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.id = 'card-' + i;
+    a.innerHTML =
+      '<span class="card-n">0'+(i+1)+'</span>'+
+      '<div class="card-icon" aria-hidden="true">'+ICONS[cat.icono]+'</div>'+
+      '<span class="card-label">'+cat.tag+'</span>'+
+      '<div class="card-name">Catálogo<br>'+cat.nombre+'</div>'+
+      '<span class="card-cta">Ver en Canva <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></span>';
+    grid.appendChild(a);
+  });
+
+  /* Animate on scroll */
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, idx){
+      if(e.isIntersecting){
+        const delay = Array.from(document.querySelectorAll('.card')).indexOf(e.target) * 80;
+        setTimeout(function(){ e.target.classList.add('in'); }, delay);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.1});
+  document.querySelectorAll('.card').forEach(function(c){ io.observe(c); });
+
+  /* Sticky nav scroll */
+  const topbar = document.getElementById('topbar');
+  window.addEventListener('scroll', function(){
+    topbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, {passive:true});
+
+  var scrollHint = document.getElementById('scroll-hint');
+  if (scrollHint) {
+    scrollHint.addEventListener('click', function () {
+      document.getElementById('catalogos').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  var waBtn = document.getElementById('whatsapp-btn');
+  if (waBtn) {
+    waBtn.href = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + encodeURIComponent(WHATSAPP_MSG);
+  }
+})();
+</script>
+
+<!-- WhatsApp Floating Button -->
+<a id="whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Contáctanos por WhatsApp al 989 214 168">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.666.598 1.216.774 1.388.86.173.086.275.072.376-.043.101-.115.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.564-10.563 2.82 0 5.474 1.098 7.468 3.092 1.993 1.994 3.091 4.646 3.091 7.466-.002 5.825-4.741 10.563-10.563 10.563z"/></svg>
+</a>
+</body>
+</html>
