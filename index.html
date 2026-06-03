@@ -631,18 +631,13 @@ function initHeroVideo(){
   var io = new IntersectionObserver(function(entries){
     if (!entries[0].isIntersecting) return;
     video.src = sources[0];
-    video.addEventListener('error', function onErr(){
-      video.removeEventListener('error', onErr);
-      if (sources[1]) {
-        video.src = sources[1];
-        video.load();
-        video.play().catch(function(){});
-      } else {
-        hero.classList.add('hero-no-video');
-      }
+    video.addEventListener('error', function(){
+      hero.classList.add('hero-no-video');
+    }, {once:true});
+    video.addEventListener('canplay', function(){
+      video.play().catch(function(){});
     }, {once:true});
     video.load();
-    video.play().catch(function(){ hero.classList.add('hero-no-video'); });
     io.disconnect();
   }, {threshold: 0.15, rootMargin: '50px'});
   io.observe(hero);
