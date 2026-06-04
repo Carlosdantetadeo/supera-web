@@ -8,5 +8,32 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/catalogo/preventa",
+      "destination": "https://canva.link/4wsaxnpao3f3umc",
+      "permanent": false
+    },
+    {
+      "source": "/catalogo/futbol",
+      "destination": "https://canva.link/y513y5cz1eaxlxl",
+      "permanent": false
+    },
+    {
+      "source": "/catalogo/basket",
+      "destination": "https://canva.link/5m8msr2wwsw74l7",
+      "permanent": false
+    },
+    {
+      "source": "/catalogo/mujer",
+      "destination": "https://canva.link/fuo3h55ff13ywnv",
+      "permanent": false
+    },
+    {
+      "source": "/catalogo/hombre",
+      "destination": "https://canva.link/fuo3h55ff13ywnv",
+      "permanent": false
+    }
   ]
 }
