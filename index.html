@@ -144,7 +144,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 .hero-logo{
-  width:min(320px,60vw);
+  /* before: min(320px,60vw) — after: min(500px,76vw) */
+  width:min(500px,76vw);
   filter:drop-shadow(0 4px 16px rgba(0,0,0,.7));
   animation:fadeLeft .7s .25s both;
 }
@@ -450,7 +451,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   #topbar{padding:0 max(1rem, env(safe-area-inset-left)) 0 max(1rem, env(safe-area-inset-right))}
   #hero{min-height:max(100svh, 480px)}
   .hero-content{padding:0 max(1.25rem, env(safe-area-inset-left)) 0 max(1.25rem, env(safe-area-inset-right))}
-  .hero-logo{width:min(260px, 72vw)}
+  /* before: min(260px,72vw) — after: min(360px,88vw) */
+  .hero-logo{width:min(360px,88vw)}
   .btn-primary{min-height:48px;padding:.9rem 1.6rem;font-size:.82rem}
   .topbar-cta{min-height:44px;display:inline-flex;align-items:center;padding:.5rem 1rem}
   #catalogos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
@@ -472,8 +474,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 <a class="skip-link" href="#catalogos">Ir a catálogos</a>
 
 <!-- ─── TOPBAR ─── -->
+<!-- before: topbar tenía logo.svg a la izquierda — eliminado: ruido visual, hero central ya ancla la marca -->
 <header id="topbar">
-  <img src="logo.svg" alt="Supera" class="topbar-logo" width="140" height="36" decoding="async" fetchpriority="high"/>
   <a href="#catalogos" class="topbar-cta">Ver catálogos</a>
 </header>
 
