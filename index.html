@@ -146,7 +146,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 .hero-logo{
-  width:880px;
+  width:clamp(200px,38vw,480px);
   filter:brightness(0) invert(1);
   animation:fadeLeft .7s .25s both;
 }
@@ -453,7 +453,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   #hero{min-height:max(100svh, 480px)}
   /* before: padding simétrico izquierda/derecha */
   .hero-content{padding:0 0 0 max(1.25rem, env(safe-area-inset-left))}
-  .hero-logo{width:90vw}
+  .hero-logo{width:clamp(160px,68vw,300px)}
   .btn-primary{min-height:48px;padding:.9rem 1.6rem;font-size:.82rem}
   .topbar-cta{min-height:44px;display:inline-flex;align-items:center;padding:.5rem 1rem}
   #catalogos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
