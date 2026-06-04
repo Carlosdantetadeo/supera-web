@@ -119,11 +119,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 .hero-content{
   position:relative;z-index:3;
-  width:100%;max-width:1200px;
-  padding:0 2.5rem;
+  width:100%;
+  /* before: padding:0 2.5rem (simétrico, centraba el bloque) */
+  padding:0 0 0 max(3rem,7vw);
   display:flex;flex-direction:column;
   align-items:flex-start;
-  gap:1.5rem;
+  /* before: gap:1.5rem */
+  gap:1.4rem;
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:.5rem;
@@ -450,7 +452,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 @media(max-width:767px){
   #topbar{padding:0 max(1rem, env(safe-area-inset-left)) 0 max(1rem, env(safe-area-inset-right))}
   #hero{min-height:max(100svh, 480px)}
-  .hero-content{padding:0 max(1.25rem, env(safe-area-inset-left)) 0 max(1.25rem, env(safe-area-inset-right))}
+  /* before: padding simétrico izquierda/derecha */
+  .hero-content{padding:0 0 0 max(1.25rem, env(safe-area-inset-left))}
   /* before: min(260px,72vw) — after: min(360px,88vw) */
   .hero-logo{width:min(360px,88vw)}
   .btn-primary{min-height:48px;padding:.9rem 1.6rem;font-size:.82rem}
