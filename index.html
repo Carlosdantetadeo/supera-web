@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="dns-prefetch" href="https://canva.link"/>
-<link rel="preload" href="logo.png" as="image" type="image/png"/>
+<link rel="preload" href="logo.svg" as="image" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/></noscript>
 <style>
@@ -72,8 +72,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 .topbar-logo{
   height:36px;
   object-fit:contain;
-  transform:translateZ(0);
-  image-rendering:-webkit-optimize-contrast;
 }
 .topbar-cta{
   padding:.45rem 1.2rem;
@@ -147,8 +145,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 .hero-logo{
   width:min(320px,60vw);
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.9));
-  transform:translateZ(0);
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.7));
   animation:fadeLeft .7s .25s both;
 }
 
@@ -476,7 +473,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 <!-- ─── TOPBAR ─── -->
 <header id="topbar">
-  <img src="logo.png" alt="Supera" class="topbar-logo" width="140" height="36" decoding="async" fetchpriority="high"/>
+  <img src="logo.svg" alt="Supera" class="topbar-logo" width="140" height="36" decoding="async" fetchpriority="high"/>
   <a href="#catalogos" class="topbar-cta">Ver catálogos</a>
 </header>
 
@@ -491,7 +488,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
     <div class="hero-badge">
       <span></span> Colección 2026
     </div>
-    <img src="logo.png" alt="Supera – Move is Life" class="hero-logo" width="320" height="120" decoding="async" fetchpriority="high"/>
+    <img src="logo.svg" alt="Supera – Move is Life" class="hero-logo" width="320" height="120" decoding="async" fetchpriority="high"/>
     <p class="hero-headline">Viste tu juego · Define tu estilo</p>
     <div class="hero-actions">
       <a href="#catalogos" class="btn-primary" id="btn-ver-catalogos">
@@ -539,7 +536,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 <footer id="footer">
   <div class="footer-wrap">
     <div class="footer-brand">
-      <img src="logo.png" alt="Supera" class="footer-logo" width="160" height="48" decoding="async" loading="lazy"/>
+      <img src="logo.svg" alt="Supera" class="footer-logo" width="160" height="48" decoding="async" loading="lazy"/>
       <p class="footer-phrase">Move is life · Cada paso cuenta</p>
       <p class="footer-copy">© 2026 Supera. Todos los derechos reservados.</p>
     </div>
