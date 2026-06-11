@@ -343,9 +343,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   color:var(--muted);
 }
 .card-name{
-  font-size:1.05rem;font-weight:700;
+  font-size:1.6rem;font-weight:800;
   text-transform:uppercase;letter-spacing:.04em;
-  line-height:1.2;
+  line-height:1.1;
 }
 
 .card-cta{
@@ -607,7 +607,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   .topbar-cta{min-height:44px;display:inline-flex;align-items:center;padding:.5rem 1rem}
   #catalogos, #productos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
   .card{padding:1.35rem 1rem 1.25rem;min-height:44px}
-  .card-name{font-size:.95rem}
+  .card-name{font-size:1.3rem}
   #footer{padding:3rem max(1rem, env(safe-area-inset-left)) max(6rem, calc(5rem + env(safe-area-inset-bottom))) max(1rem, env(safe-area-inset-right))}
   .whatsapp-btn{
     bottom:max(1.25rem, env(safe-area-inset-bottom));
@@ -889,8 +889,8 @@ function initHeroVideo(){
         '<span class="card-n">0'+(i+1)+'</span>'+
         '<div class="card-icon" aria-hidden="true">'+ICONS[cat.icono]+'</div>'+
         '<span class="card-label">'+cat.tag+'</span>'+
-        '<div class="card-name">Catálogo<br>'+cat.nombre+'</div>'+
-        '<span class="card-cta">Ver en Canva <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></span>';
+        '<div class="card-name">'+cat.nombre+'</div>'+
+        '<span class="card-cta">Ver catálogo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></span>';
       grid.appendChild(a);
       io.observe(a);
     });
