@@ -448,6 +448,155 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 }
 .whatsapp-btn svg { width: 32px; height: 32px; fill: currentColor; }
 
+/* ─── PRODUCTOS ─── */
+#productos {
+  background: var(--black);
+  padding: 6rem 2rem 7rem;
+  position: relative;
+}
+#productos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--red), transparent);
+}
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+@media(min-width: 640px) {
+  .prod-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+@media(min-width: 1024px) {
+  .prod-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.prod-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .55s ease, transform .55s ease, border-color .3s, box-shadow .3s;
+}
+.prod-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.prod-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, .5), 0 0 0 1px var(--red) inset;
+  transform: translateY(-5px);
+}
+.prod-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface3);
+}
+.prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.prod-card:hover .prod-img {
+  transform: scale(1.06);
+}
+.prod-img-b {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .35s ease, transform .5s ease;
+}
+.prod-card:hover .prod-img-b {
+  opacity: 1;
+}
+.prod-info {
+  padding: 1.2rem 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex-grow: 1;
+}
+.prod-name {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6rem;
+}
+.prod-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.prod-price {
+  font-family: var(--ff-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.prod-price::first-letter {
+  color: var(--red);
+  margin-right: 0.1rem;
+}
+.prod-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: #25d366;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--ff-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.2s;
+  flex-grow: 1;
+  text-align: center;
+}
+.prod-btn:hover {
+  background: #20b858;
+  transform: translateY(-1px);
+}
+.prod-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
 @media(max-width:767px){
   #topbar{padding:0 max(1rem, env(safe-area-inset-left)) 0 max(1rem, env(safe-area-inset-right))}
   #hero{min-height:max(100svh, 480px)}
@@ -456,7 +605,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   .hero-logo{width:clamp(160px,68vw,300px)}
   .btn-primary{min-height:48px;padding:.9rem 1.6rem;font-size:.82rem}
   .topbar-cta{min-height:44px;display:inline-flex;align-items:center;padding:.5rem 1rem}
-  #catalogos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
+  #catalogos, #productos{padding:4rem max(1rem, env(safe-area-inset-left)) 5rem max(1rem, env(safe-area-inset-right))}
   .card{padding:1.35rem 1rem 1.25rem;min-height:44px}
   .card-name{font-size:.95rem}
   #footer{padding:3rem max(1rem, env(safe-area-inset-left)) max(6rem, calc(5rem + env(safe-area-inset-bottom))) max(1rem, env(safe-area-inset-right))}
@@ -498,7 +647,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
     </div>
   </div>
 
-  <button type="button" class="scroll-hint" id="scroll-hint" aria-label="Ir a catálogos">
+  <button type="button" class="scroll-hint" id="scroll-hint" aria-label="Ir a productos">
     <p>Scroll</p>
     <div class="scroll-line" aria-hidden="true"></div>
   </button>
@@ -518,8 +667,94 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
   </div>
 </div>
 
-<!-- ─── CATÁLOGOS ─── -->
 <main id="main">
+<!-- ─── PRODUCTOS ─── -->
+<section id="productos" class="grain">
+  <div class="sec-wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Colección 2026</span>
+      <h2 class="sec-title">Nuestros <em>Productos</em></h2>
+      <div class="title-rule"></div>
+    </div>
+    
+    <div class="prod-grid" id="productos-grid">
+      <!-- Fallback static products inside the HTML in case JSON loading fails or is empty -->
+      <!-- Producto 1 -->
+      <a class="prod-card" href="https://wa.me/51989214168?text=Hola%20Supera%2C%20estoy%20interesado%20en%20el%20producto%3A%20Nike%20Air%20Force%201%20%2707%20-%20Black%20con%20precio%3A%20S%2F%20449.00.%20%C2%BFTienen%20stock%3F" target="_blank" rel="noopener noreferrer">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="catalogos/productos/nike-af1-07-black-01.jpg" alt="Nike Air Force 1 '07 - Black" loading="lazy" decoding="async">
+          <img class="prod-img prod-img-b" src="catalogos/productos/nike-af1-07-black-02.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Nike Air Force 1 '07 - Black</div>
+          <div class="prod-price-row">
+            <span class="prod-price">S/ 449.00</span>
+            <span class="prod-btn">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.968 1.486 5.317 0 9.643-4.32 9.646-9.63.002-2.573-1.002-4.991-2.83-6.822-1.829-1.83-4.25-2.831-6.828-2.831-5.32 0-9.647 4.32-9.65 9.63-.001 1.765.467 3.493 1.357 5.022L1.937 21.8l4.71-1.246zM15.86 14.94c-.26-.13-1.534-.756-1.77-.84-.237-.086-.41-.13-.58.13-.172.26-.666.84-.817.994-.15.155-.3.172-.56.043-.26-.13-1.097-.404-2.09-1.287-.772-.687-1.293-1.536-1.444-1.796-.151-.26-.016-.4.115-.53.117-.117.26-.3.39-.452.13-.153.172-.26.26-.432.086-.173.043-.325-.02-.455-.066-.13-.58-1.4-.797-1.923-.21-.51-.422-.44-.58-.448-.152-.008-.328-.008-.504-.008-.176 0-.462.065-.703.325-.241.26-.921.9-.921 2.193 0 1.293.94 2.54 1.07 2.712.13.173 1.85 2.825 4.48 3.962.628.271 1.118.432 1.5.554.63.2 1.205.172 1.66.104.507-.075 1.535-.627 1.75-1.233.217-.607.217-1.127.152-1.233-.065-.107-.237-.173-.497-.303z"/></svg>
+              Consultar
+            </span>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Producto 2 -->
+      <a class="prod-card" href="https://wa.me/51989214168?text=Hola%20Supera%2C%20estoy%20interesado%20en%20el%20producto%3A%20Nike%20Air%20Force%201%20%2707%20-%20White%20con%20precio%3A%20S%2F%20449.00.%20%C2%BFTienen%20stock%3F" target="_blank" rel="noopener noreferrer">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="catalogos/productos/nike-af1-07-449-01.jpg" alt="Nike Air Force 1 '07 - White" loading="lazy" decoding="async">
+          <img class="prod-img prod-img-b" src="catalogos/productos/nike-af1-07-449-02.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Nike Air Force 1 '07 - White</div>
+          <div class="prod-price-row">
+            <span class="prod-price">S/ 449.00</span>
+            <span class="prod-btn">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.968 1.486 5.317 0 9.643-4.32 9.646-9.63.002-2.573-1.002-4.991-2.83-6.822-1.829-1.83-4.25-2.831-6.828-2.831-5.32 0-9.647 4.32-9.65 9.63-.001 1.765.467 3.493 1.357 5.022L1.937 21.8l4.71-1.246zM15.86 14.94c-.26-.13-1.534-.756-1.77-.84-.237-.086-.41-.13-.58.13-.172.26-.666.84-.817.994-.15.155-.3.172-.56.043-.26-.13-1.097-.404-2.09-1.287-.772-.687-1.293-1.536-1.444-1.796-.151-.26-.016-.4.115-.53.117-.117.26-.3.39-.452.13-.153.172-.26.26-.432.086-.173.043-.325-.02-.455-.066-.13-.58-1.4-.797-1.923-.21-.51-.422-.44-.58-.448-.152-.008-.328-.008-.504-.008-.176 0-.462.065-.703.325-.241.26-.921.9-.921 2.193 0 1.293.94 2.54 1.07 2.712.13.173 1.85 2.825 4.48 3.962.628.271 1.118.432 1.5.554.63.2 1.205.172 1.66.104.507-.075 1.535-.627 1.75-1.233.217-.607.217-1.127.152-1.233-.065-.107-.237-.173-.497-.303z"/></svg>
+              Consultar
+            </span>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Producto 3 -->
+      <a class="prod-card" href="https://wa.me/51989214168?text=Hola%20Supera%2C%20estoy%20interesado%20en%20el%20producto%3A%20Nike%20Air%20Max%2090%20-%20Grey%20con%20precio%3A%20S%2F%20449.00.%20%C2%BFTienen%20stock%3F" target="_blank" rel="noopener noreferrer">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="catalogos/productos/nike-airmax90-white-01.jpg" alt="Nike Air Max 90 - Grey" loading="lazy" decoding="async">
+          <img class="prod-img prod-img-b" src="catalogos/productos/nike-airmax90-white-02.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Nike Air Max 90 - Grey</div>
+          <div class="prod-price-row">
+            <span class="prod-price">S/ 449.00</span>
+            <span class="prod-btn">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.968 1.486 5.317 0 9.643-4.32 9.646-9.63.002-2.573-1.002-4.991-2.83-6.822-1.829-1.83-4.25-2.831-6.828-2.831-5.32 0-9.647 4.32-9.65 9.63-.001 1.765.467 3.493 1.357 5.022L1.937 21.8l4.71-1.246zM15.86 14.94c-.26-.13-1.534-.756-1.77-.84-.237-.086-.41-.13-.58.13-.172.26-.666.84-.817.994-.15.155-.3.172-.56.043-.26-.13-1.097-.404-2.09-1.287-.772-.687-1.293-1.536-1.444-1.796-.151-.26-.016-.4.115-.53.117-.117.26-.3.39-.452.13-.153.172-.26.26-.432.086-.173.043-.325-.02-.455-.066-.13-.58-1.4-.797-1.923-.21-.51-.422-.44-.58-.448-.152-.008-.328-.008-.504-.008-.176 0-.462.065-.703.325-.241.26-.921.9-.921 2.193 0 1.293.94 2.54 1.07 2.712.13.173 1.85 2.825 4.48 3.962.628.271 1.118.432 1.5.554.63.2 1.205.172 1.66.104.507-.075 1.535-.627 1.75-1.233.217-.607.217-1.127.152-1.233-.065-.107-.237-.173-.497-.303z"/></svg>
+              Consultar
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Producto 4 -->
+      <a class="prod-card" href="https://wa.me/51989214168?text=Hola%20Supera%2C%20estoy%20interesado%20en%20el%20producto%3A%20Nike%20Air%20Max%2090%20-%20Black%20con%20precio%3A%20S%2F%20449.00.%20%C2%BFTienen%20stock%3F" target="_blank" rel="noopener noreferrer">
+        <div class="prod-img-wrap">
+          <img class="prod-img" src="catalogos/productos/nike-airmax90-variant-01.jpg" alt="Nike Air Max 90 - Black" loading="lazy" decoding="async">
+          <img class="prod-img prod-img-b" src="catalogos/productos/nike-airmax90-variant-02.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </div>
+        <div class="prod-info">
+          <div class="prod-name">Nike Air Max 90 - Black</div>
+          <div class="prod-price-row">
+            <span class="prod-price">S/ 449.00</span>
+            <span class="prod-btn">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.968 1.486 5.317 0 9.643-4.32 9.646-9.63.002-2.573-1.002-4.991-2.83-6.822-1.829-1.83-4.25-2.831-6.828-2.831-5.32 0-9.647 4.32-9.65 9.63-.001 1.765.467 3.493 1.357 5.022L1.937 21.8l4.71-1.246zM15.86 14.94c-.26-.13-1.534-.756-1.77-.84-.237-.086-.41-.13-.58.13-.172.26-.666.84-.817.994-.15.155-.3.172-.56.043-.26-.13-1.097-.404-2.09-1.287-.772-.687-1.293-1.536-1.444-1.796-.151-.26-.016-.4.115-.53.117-.117.26-.3.39-.452.13-.153.172-.26.26-.432.086-.173.043-.325-.02-.455-.066-.13-.58-1.4-.797-1.923-.21-.51-.422-.44-.58-.448-.152-.008-.328-.008-.504-.008-.176 0-.462.065-.703.325-.241.26-.921.9-.921 2.193 0 1.293.94 2.54 1.07 2.712.13.173 1.85 2.825 4.48 3.962.628.271 1.118.432 1.5.554.63.2 1.205.172 1.66.104.507-.075 1.535-.627 1.75-1.233.217-.607.217-1.127.152-1.233-.065-.107-.237-.173-.497-.303z"/></svg>
+              Consultar
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATÁLOGOS ─── -->
 <section id="catalogos" class="grain">
   <div class="sec-wrap">
     <div class="sec-head">
@@ -628,44 +863,102 @@ function initHeroVideo(){
   initHeroVideo();
   const grid = document.getElementById('cards-grid');
 
-  CATALOGOS.forEach(function(cat, i){
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = cat.url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.id = 'card-' + i;
-    a.innerHTML =
-      '<span class="card-n">0'+(i+1)+'</span>'+
-      '<div class="card-icon" aria-hidden="true">'+ICONS[cat.icono]+'</div>'+
-      '<span class="card-label">'+cat.tag+'</span>'+
-      '<div class="card-name">Catálogo<br>'+cat.nombre+'</div>'+
-      '<span class="card-cta">Ver en Canva <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></span>';
-    grid.appendChild(a);
-  });
-
   /* Animate on scroll */
   const io = new IntersectionObserver(function(entries){
     entries.forEach(function(e, idx){
       if(e.isIntersecting){
-        const delay = Array.from(document.querySelectorAll('.card')).indexOf(e.target) * 80;
+        const isCard = e.target.classList.contains('card');
+        const selector = isCard ? '.card' : '.prod-card';
+        const delay = Array.from(document.querySelectorAll(selector)).indexOf(e.target) * 80;
         setTimeout(function(){ e.target.classList.add('in'); }, delay);
         io.unobserve(e.target);
       }
     });
   }, {threshold:.1});
-  document.querySelectorAll('.card').forEach(function(c){ io.observe(c); });
+
+  // Render Catalogs
+  if (grid) {
+    CATALOGOS.forEach(function(cat, i){
+      const a = document.createElement('a');
+      a.className = 'card';
+      a.href = cat.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.id = 'card-' + i;
+      a.innerHTML =
+        '<span class="card-n">0'+(i+1)+'</span>'+
+        '<div class="card-icon" aria-hidden="true">'+ICONS[cat.icono]+'</div>'+
+        '<span class="card-label">'+cat.tag+'</span>'+
+        '<div class="card-name">Catálogo<br>'+cat.nombre+'</div>'+
+        '<span class="card-cta">Ver en Canva <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></span>';
+      grid.appendChild(a);
+      io.observe(a);
+    });
+  }
+
+  // Load products dynamically
+  const prodGrid = document.getElementById('productos-grid');
+  if (prodGrid) {
+    fetch('catalogos/productos.json')
+      .then(function(res) {
+        if (!res.ok) throw new Error('Network response was not OK');
+        return res.json();
+      })
+      .then(function(data) {
+        if (Array.isArray(data) && data.length > 0) {
+          prodGrid.innerHTML = ''; // Clear fallback/static products
+          data.forEach(function(p, i) {
+            const card = document.createElement('a');
+            card.className = 'prod-card';
+            card.href = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + encodeURIComponent('Hola Supera, estoy interesado en el producto: ' + p.nombre + ' con precio: ' + p.precio + '. ¿Tienen stock?');
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.innerHTML =
+              '<div class="prod-img-wrap">' +
+                '<img class="prod-img" src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy" decoding="async">' +
+                (p.imagen2 ? '<img class="prod-img prod-img-b" src="' + p.imagen2 + '" alt="" aria-hidden="true" loading="lazy" decoding="async">' : '') +
+              '</div>' +
+              '<div class="prod-info">' +
+                '<div class="prod-name">' + p.nombre + '</div>' +
+                '<div class="prod-price-row">' +
+                  '<span class="prod-price">' + p.precio + '</span>' +
+                  '<span class="prod-btn">' +
+                    '<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.968 1.486 5.317 0 9.643-4.32 9.646-9.63.002-2.573-1.002-4.991-2.83-6.822-1.829-1.83-4.25-2.831-6.828-2.831-5.32 0-9.647 4.32-9.65 9.63-.001 1.765.467 3.493 1.357 5.022L1.937 21.8l4.71-1.246zM15.86 14.94c-.26-.13-1.534-.756-1.77-.84-.237-.086-.41-.13-.58.13-.172.26-.666.84-.817.994-.15.155-.3.172-.56.043-.26-.13-1.097-.404-2.09-1.287-.772-.687-1.293-1.536-1.444-1.796-.151-.26-.016-.4.115-.53.117-.117.26-.3.39-.452.13-.153.172-.26.26-.432.086-.173.043-.325-.02-.455-.066-.13-.58-1.4-.797-1.923-.21-.51-.422-.44-.58-.448-.152-.008-.328-.008-.504-.008-.176 0-.462.065-.703.325-.241.26-.921.9-.921 2.193 0 1.293.94 2.54 1.07 2.712.13.173 1.85 2.825 4.48 3.962.628.271 1.118.432 1.5.554.63.2 1.205.172 1.66.104.507-.075 1.535-.627 1.75-1.233.217-.607.217-1.127.152-1.233-.065-.107-.237-.173-.497-.303z"/></svg>' +
+                    'Consultar' +
+                  '</span>' +
+                '</div>' +
+              '</div>';
+            prodGrid.appendChild(card);
+            io.observe(card);
+          });
+        } else {
+          // If JSON is empty, observe the fallback products
+          document.querySelectorAll('.prod-card').forEach(function(c) {
+            io.observe(c);
+          });
+        }
+      })
+      .catch(function(err) {
+        console.warn('Ocurrió un error al cargar productos:', err);
+        // If fetch fails, observe the fallback products
+        document.querySelectorAll('.prod-card').forEach(function(c) {
+          io.observe(c);
+        });
+      });
+  }
 
   /* Sticky nav scroll */
   const topbar = document.getElementById('topbar');
-  window.addEventListener('scroll', function(){
-    topbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, {passive:true});
+  if (topbar) {
+    window.addEventListener('scroll', function(){
+      topbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, {passive:true});
+  }
 
   var scrollHint = document.getElementById('scroll-hint');
   if (scrollHint) {
     scrollHint.addEventListener('click', function () {
-      document.getElementById('catalogos').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
     });
   }
 

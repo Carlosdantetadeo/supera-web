@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "nombre": "Nike Air Force 1 '07 - Black",
+    "precio": "S/ 449.00",
+    "imagen": "catalogos/productos/nike-af1-07-black-01.jpg",
+    "imagen2": "catalogos/productos/nike-af1-07-black-02.jpg"
+  },
+  {
+    "id": "2",
+    "nombre": "Nike Air Force 1 '07 - White",
+    "precio": "S/ 449.00",
+    "imagen": "catalogos/productos/nike-af1-07-449-01.jpg",
+    "imagen2": "catalogos/productos/nike-af1-07-449-02.jpg"
+  },
+  {
+    "id": "3",
+    "nombre": "Nike Air Max 90 - Grey",
+    "precio": "S/ 449.00",
+    "imagen": "catalogos/productos/nike-airmax90-white-01.jpg",
+    "imagen2": "catalogos/productos/nike-airmax90-white-02.jpg"
+  },
+  {
+    "id": "4",
+    "nombre": "Nike Air Max 90 - Black",
+    "precio": "S/ 449.00",
+    "imagen": "catalogos/productos/nike-airmax90-variant-01.jpg",
+    "imagen2": "catalogos/productos/nike-airmax90-variant-02.jpg"
+  }
+]
